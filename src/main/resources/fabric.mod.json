@@ -1,27 +1,27 @@
 {
   "schemaVersion": 1,
-  "id": "addon-template",
+  "id": "cubic-addon",
   "version": "${version}",
-  "name": "Addon Template",
-  "description": "An addon template for Meteor Client addons.",
+  "name": "Cubic Addon",
+  "description": "A Meteor Client addon that adds a Cubic button to multiplayer accounts.",
   "authors": [
-    "seasnail"
+    "Cube"
   ],
   "contact": {
-    "repo": "https://github.com/MeteorDevelopment/meteor-addon-template"
+    "repo": "https://github.com/Cube/Cube-s-meteor-add-on"
   },
-  "icon": "assets/template/icon.png",
+  "icon": "assets/cubic/icon.png",
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "com.example.addon.AddonTemplate"
+      "com.example.addon.CubicAddon"
     ]
   },
   "mixins": [
-    "addon-template.mixins.json"
+    "cubic-addon.mixins.json"
   ],
   "custom": {
-    "meteor-client:color": "225,25,25"
+    "meteor-client:color": "100,100,255"
   },
   "depends": {
     "java": ">=21",

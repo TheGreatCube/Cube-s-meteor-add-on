@@ -1,26 +1,43 @@
-# Meteor Addon Template
+# Cubic Addon for Meteor Client
 
-A template to allow easy usage of the Meteor Addon API.
+A Meteor Client addon that adds a `/cubic` command to send a 10-digit alphanumeric code to a URL as a GET request.
 
-### How to use
+## Features
+- Adds a `/cubic <10-digit-code> <url>` command.
+- Sends the code to the specified URL as a GET request (e.g., `https://example.com?code=YOURCODE123`).
 
-- Clone this project
-- Use this template to create new modules/commands
-- Build the executable using the gradle `build` task.
-- Run the mod with Meteor.
+## Installation
 
-### Project structure
+1. **Build the Addon**
+   - Open a terminal in this project directory.
+   - Run:
+     ```sh
+     ./gradlew build
+     ```
+   - The built JAR will be in `build/libs/` (e.g., `cubic-addon-0.1.0.jar`).
+
+2. **Install in Meteor Client**
+   - Copy the built JAR file to your Meteor Client `mods` folder (usually in `.minecraft/mods`).
+   - Launch Minecraft with Meteor Client.
+
+## Usage
+
+- In-game, open chat and run:
+  ```
+  /cubic <10-digit-code> <url>
+  ```
+  Example:
+  ```
+  /cubic ABC123DE45 https://example.com/endpoint
+  ```
+- The addon will send a GET request to `https://example.com/endpoint?code=ABC123DE45` and show the response in chat.
+
+## Project structure
 
 ```text
 .
-│── .github
-│   ╰── workflows
-│       │── dev_build.yml
-│       ╰── pull_request.yml
 │── gradle
 │   ╰── wrapper
-│       │── gradle-wrapper.jar
-│       ╰── gradle-wrapper.properties
 │── src
 │   ╰── main
 │       │── java
@@ -28,58 +45,21 @@ A template to allow easy usage of the Meteor Addon API.
 │       │       ╰── example
 │       │           ╰── addon
 │       │               │── commands
-│       │               │   ╰── CommandExample
-│       │               │── hud
-│       │               │   ╰── HudExample
-│       │               │── modules
-│       │               │   ╰── ModuleExample
-│       │               ╰── AddonTemplate
+│       │               │   ╰── CubicCommand.java
+│       │               ╰── CubicAddon.java
 │       ╰── resources
 │           │── assets
-│           │   ╰── template
+│           │   ╰── cubic
 │           │       ╰── icon.png
-│           │── addon-template.mixins.json
+│           │── cubic-addon.mixins.json
 │           ╰── fabric.mod.json
-│── .editorconfig
-│── .gitignore
-│── build.gradle
+│── build.gradle.kts
 │── gradle.properties
-│── gradlew
-│── gradlew.bat
 │── LICENSE
 │── README.md
-╰── settings.gradle
+╰── settings.gradle.kts
 ```
-
-This is the default project structure. Each folder/file has a specific purpose.  
-Here is a brief explanation of the ones you might need to modify:
-
-- `.github/workflows`: Contains the GitHub Actions configuration files.
-- `gradle`: Contains the Gradle wrapper files.  
-  Edit the `gradle.properties` file to change the version of the Gradle wrapper.
-- `src/main/java/com/example/addon`: Contains the main class of the addon.  
-  Here you can register your custom commands, modules, and HUDs.  
-  Edit the `getPackage` method to reflect the package of your addon.
-- `src/main/resources`: Contains the resources of the addon.
-    - `assets`: Contains the assets of the addon.  
-      You can add your own assets here, separated in subfolders.
-        - `template`: Contains the assets of the template.  
-          You can replace the `icon.png` file with your own addon icon.  
-          Also, rename this folder to reflect the name of your addon.
-    - `addon-template.mixins.json`: Contains the Mixin configuration for the addon.  
-      You can add your own mixins in the `client` array.
-    - `fabric.mod.json`: Contains the metadata of the addon.  
-      Edit the various fields to reflect the metadata of your addon.
-- `build.gradle.kts`: Contains the Gradle build script.  
-  You can manage the dependencies of the addon here.  
-  Remember to keep the `fabric-loom` version up-to-date.
-- `gradle.properties.kts`: Contains the properties of the Gradle build.  
-  These will be used by the build script.
-- `LICENSE`: Contains the license of the addon.  
-  You can edit this file to change the license of your addon.
-- `README.md`: Contains the documentation of the addon.  
-  You can edit this file to reflect the documentation of your addon, and showcase its features.
 
 ## License
 
-This template is available under the CC0 license. Feel free to use it for your own projects.
+This addon is available under the CC0 license. Feel free to use it for your own projects.
